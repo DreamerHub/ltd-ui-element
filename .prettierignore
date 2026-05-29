@@ -1,6 +1,7 @@
 dist/
 node_modules/
 .pnpm-store/
+.claude/
 *.min.js
 *.min.css
 package-lock.json
@@ -8,3 +9,4 @@ pnpm-lock.yaml
 yarn.lock
 coverage/
 CHANGELOG.md
+.changeset/

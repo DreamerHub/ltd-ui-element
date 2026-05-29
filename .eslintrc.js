@@ -37,11 +37,22 @@ module.exports = {
 
     // Import
     'import/no-unresolved': 'off',
+    'import/named': 'off',
+    'import/namespace': 'off',
+    'import/no-named-as-default-member': 'off',
     'import/order': [
       'warn',
       {
         groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-        'newlines-between': 'always'
+        'newlines-between': 'always',
+        pathGroups: [
+          {
+            pattern: '@vue/**',
+            group: 'external',
+            position: 'after'
+          }
+        ],
+        pathGroupsExcludedImportTypes: ['builtin']
       }
     ]
   },
@@ -50,6 +61,12 @@ module.exports = {
       files: ['*.config.js', '*.config.mjs', 'scripts/**/*.js'],
       rules: {
         'no-console': 'off'
+      }
+    },
+    {
+      files: ['**/__tests__/**/*.spec.js', '**/__tests__/**/*.test.js'],
+      rules: {
+        'import/order': 'off'
       }
     }
   ],
