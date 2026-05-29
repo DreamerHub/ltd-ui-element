@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
+
 import { LtdTablePro } from '../src/index.js'
 
 const mockData = [
@@ -13,6 +14,29 @@ const mockColumns = [
   { prop: 'age', label: '年龄', width: 100 },
   { prop: 'address', label: '地址' }
 ]
+
+/** Element Plus 组件 stubs */
+const elStubs = {
+  'el-table': true,
+  'el-table-column': true,
+  'el-pagination': true,
+  'el-popover': true,
+  'el-button': true,
+  'el-checkbox': true,
+  'el-checkbox-group': true,
+  'el-tag': true,
+  'el-empty': true,
+  'el-loading': true
+}
+
+function mountTablePro(options = {}) {
+  return mount(LtdTablePro, {
+    global: {
+      stubs: elStubs
+    },
+    ...options
+  })
+}
 
 describe('LtdTablePro', () => {
   it('renders with correct component name', () => {
@@ -28,7 +52,7 @@ describe('LtdTablePro', () => {
   })
 
   it('accepts data and columns props', () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns
@@ -39,7 +63,7 @@ describe('LtdTablePro', () => {
   })
 
   it('has correct default props', () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns
@@ -59,7 +83,7 @@ describe('LtdTablePro', () => {
   })
 
   it('computes displayedColumns correctly', () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns,
@@ -71,7 +95,7 @@ describe('LtdTablePro', () => {
   })
 
   it('emits page-change event', async () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns,
@@ -82,14 +106,14 @@ describe('LtdTablePro', () => {
 
     // Simulate page change
     wrapper.vm.handlePageChange(2)
-    await wrapper.vm.$nextTick
+    await wrapper.vm.$nextTick()
 
     expect(wrapper.emitted()).toHaveProperty('page-change')
     expect(wrapper.emitted('page-change')[0]).toEqual([{ page: 2, limit: 10 }])
   })
 
   it('emits size-change event', async () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns,
@@ -98,14 +122,14 @@ describe('LtdTablePro', () => {
     })
 
     wrapper.vm.handleSizeChange(20)
-    await wrapper.vm.$nextTick
+    await wrapper.vm.$nextTick()
 
     expect(wrapper.emitted()).toHaveProperty('size-change')
     expect(wrapper.emitted('size-change')[0]).toEqual([20])
   })
 
   it('handles edit event', () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns,
@@ -119,7 +143,7 @@ describe('LtdTablePro', () => {
   })
 
   it('handles delete event', () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns,
@@ -139,7 +163,7 @@ describe('LtdTablePro', () => {
       age: 20 + i
     }))
 
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: largeData,
         columns: mockColumns,
@@ -156,7 +180,7 @@ describe('LtdTablePro', () => {
   })
 
   it('exposes correct methods', () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns
@@ -170,7 +194,7 @@ describe('LtdTablePro', () => {
   })
 
   it('initializes visible columns on mount', () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns
@@ -181,7 +205,7 @@ describe('LtdTablePro', () => {
   })
 
   it('watches page prop changes', async () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns,
@@ -194,7 +218,7 @@ describe('LtdTablePro', () => {
   })
 
   it('watches limit prop changes', async () => {
-    const wrapper = mount(LtdTablePro, {
+    const wrapper = mountTablePro({
       props: {
         data: mockData,
         columns: mockColumns,

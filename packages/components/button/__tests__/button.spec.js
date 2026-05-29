@@ -20,7 +20,7 @@ describe('LtdButton', () => {
 
   it('applies type classes correctly', () => {
     const types = ['primary', 'success', 'warning', 'danger', 'info', 'text']
-    types.forEach((type) => {
+    types.forEach(type => {
       const wrapper = mount(LtdButton, {
         props: { type }
       })
@@ -30,7 +30,7 @@ describe('LtdButton', () => {
 
   it('applies size classes correctly', () => {
     const sizes = ['large', 'small']
-    sizes.forEach((size) => {
+    sizes.forEach(size => {
       const wrapper = mount(LtdButton, {
         props: { size }
       })
