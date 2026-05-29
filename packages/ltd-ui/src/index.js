@@ -8,8 +8,8 @@ import '@ltd-ui/table-pro/dist/style.css'
 
 const components = [LtdButton, LtdTablePro]
 
-const install = (app) => {
-  components.forEach((component) => {
+const install = app => {
+  components.forEach(component => {
     if (component.install) {
       app.use(component)
     } else if (component.name) {

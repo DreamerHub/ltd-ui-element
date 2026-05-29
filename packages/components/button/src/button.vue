@@ -38,13 +38,14 @@ const props = defineProps({
   size: {
     type: String,
     default: 'default',
-    validator: (val) => ['large', 'default', 'small'].includes(val)
+    validator: val => ['large', 'default', 'small'].includes(val)
   },
   /** 按钮类型 */
   type: {
     type: String,
     default: 'default',
-    validator: (val) => ['default', 'primary', 'success', 'warning', 'danger', 'info', 'text'].includes(val)
+    validator: val =>
+      ['default', 'primary', 'success', 'warning', 'danger', 'info', 'text'].includes(val)
   },
   /** 是否为朴素按钮 */
   plain: {
@@ -80,7 +81,7 @@ const props = defineProps({
   nativeType: {
     type: String,
     default: 'button',
-    validator: (val) => ['button', 'submit', 'reset'].includes(val)
+    validator: val => ['button', 'submit', 'reset'].includes(val)
   },
   /** 是否自动聚焦 */
   autofocus: {
@@ -106,7 +107,7 @@ const buttonClasses = computed(() => {
   ]
 })
 
-const handleClick = (evt) => {
+const handleClick = evt => {
   if (props.loading || props.disabled) return
   emit('click', evt)
 }
@@ -189,7 +190,7 @@ const handleClick = (evt) => {
     font-size: 12px;
     border-radius: 3px;
 
-    & [class*="ltd-icon"] {
+    & [class*='ltd-icon'] {
       font-size: 12px;
     }
   }

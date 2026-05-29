@@ -6,7 +6,7 @@ export default defineConfig({
       entry: './src/index.js',
       name: 'LtdCore',
       formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`
+      fileName: format => `index.${format === 'es' ? 'mjs' : 'cjs'}`
     },
     rollupOptions: {
       external: ['vue']

@@ -15,7 +15,8 @@
       "require": "./dist/index.cjs",
       "style": "./dist/style.css"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./dist/*": "./dist/*"
   },
   "scripts": {
     "build": "vite build"

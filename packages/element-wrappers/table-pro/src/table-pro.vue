@@ -82,10 +82,7 @@
               </template>
               <!-- 标签映射 -->
               <template v-else-if="col.tagMap">
-                <el-tag
-                  :type="col.tagMap[scope.row[col.prop]]?.type || 'info'"
-                  :size="size"
-                >
+                <el-tag :type="col.tagMap[scope.row[col.prop]]?.type || 'info'" :size="size">
                   {{ col.tagMap[scope.row[col.prop]]?.label || scope.row[col.prop] }}
                 </el-tag>
               </template>
@@ -327,7 +324,7 @@ const selectedRows = ref([])
 const visibleColumns = ref([])
 
 const columnOptions = computed(() => {
-  return props.columns.map((col) => ({
+  return props.columns.map(col => ({
     prop: col.prop,
     label: col.label,
     required: col.required || false
@@ -338,7 +335,7 @@ const displayedColumns = computed(() => {
   if (!props.showColumnSetting || visibleColumns.value.length === 0) {
     return props.columns
   }
-  return props.columns.filter((col) => visibleColumns.value.includes(col.prop))
+  return props.columns.filter(col => visibleColumns.value.includes(col.prop))
 })
 
 // 本地分页数据
@@ -352,7 +349,7 @@ const tableData = computed(() => {
 })
 
 // 序号计算方法
-const indexMethod = (index) => {
+const indexMethod = index => {
   if (props.localPagination || !props.showPagination) {
     return index + 1
   }
@@ -360,16 +357,16 @@ const indexMethod = (index) => {
 }
 
 // 事件处理
-const handleSelectionChange = (val) => {
+const handleSelectionChange = val => {
   selectedRows.value = val
   emit('selection-change', val)
 }
 
-const handleCurrentChange = (val) => {
+const handleCurrentChange = val => {
   emit('current-change', val)
 }
 
-const handleSortChange = (val) => {
+const handleSortChange = val => {
   emit('sort-change', val)
 }
 
@@ -385,14 +382,14 @@ const handleDelete = (row, index) => {
   emit('delete', row, index)
 }
 
-const handleSizeChange = (val) => {
+const handleSizeChange = val => {
   pageSize.value = val
   currentPage.value = 1
   emit('size-change', val)
   emit('page-change', { page: 1, limit: val })
 }
 
-const handlePageChange = (val) => {
+const handlePageChange = val => {
   currentPage.value = val
   emit('page-change', { page: val, limit: pageSize.value })
 }
@@ -413,20 +410,20 @@ defineExpose({
 
 // 初始化列可见性
 onMounted(() => {
-  visibleColumns.value = props.columns.map((col) => col.prop)
+  visibleColumns.value = props.columns.map(col => col.prop)
 })
 
 // 监听外部 page/limit 变化
 watch(
   () => props.page,
-  (val) => {
+  val => {
     currentPage.value = val
   }
 )
 
 watch(
   () => props.limit,
-  (val) => {
+  val => {
     pageSize.value = val
   }
 )

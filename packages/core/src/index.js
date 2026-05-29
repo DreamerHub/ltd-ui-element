@@ -34,14 +34,14 @@ export function isArray(val) {
  */
 export function classNames(...args) {
   const classes = []
-  args.forEach((arg) => {
+  args.forEach(arg => {
     if (!arg) return
     if (isString(arg)) {
       classes.push(arg)
     } else if (isArray(arg)) {
       classes.push(classNames(...arg))
     } else if (typeof arg === 'object') {
-      Object.keys(arg).forEach((key) => {
+      Object.keys(arg).forEach(key => {
         if (arg[key]) classes.push(key)
       })
     }
