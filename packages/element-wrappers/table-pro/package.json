@@ -1,0 +1,36 @@
+{
+  "name": "@ltd-ui/table-pro",
+  "version": "1.0.0",
+  "description": "Enhanced Element Plus Table wrapper with built-in pagination, selection, and column config",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "style": "dist/style.css",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "style": "./dist/style.css"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0",
+    "element-plus": "^2.5.0"
+  },
+  "dependencies": {
+    "@ltd-ui/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@ltd-ui/core": "workspace:*",
+    "element-plus": "^2.5.0",
+    "vite": "^5.1.0"
+  },
+  "license": "MIT"
+}
