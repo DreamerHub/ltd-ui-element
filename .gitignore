@@ -21,6 +21,10 @@ Thumbs.db
 npm-debug.log*
 pnpm-debug.log*
 
+# Lock files (pnpm project)
+package-lock.json
+yarn.lock
+
 # Testing
 coverage/
 
