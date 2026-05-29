@@ -64,9 +64,14 @@ ltd-ui-element/
 | `pnpm build` | 构建所有组件包 |
 | `pnpm build:components` | 仅构建自研组件 |
 | `pnpm build:wrappers` | 仅构建封装组件 |
-| `pnpm test` | 运行单元测试 |
-| `pnpm lint` | 运行 ESLint |
+| `pnpm test` | 运行单元测试（watch 模式） |
+| `pnpm test -- --run` | 运行单元测试（单次运行） |
+| `pnpm test -- --run --coverage` | 运行测试并生成覆盖率报告 |
+| `pnpm test:ui` | 以 UI 模式运行 Vitest |
+| `pnpm lint` | 运行 ESLint 并自动修复 |
+| `pnpm lint:check` | 运行 ESLint 仅检查不修复 |
 | `pnpm format` | 运行 Prettier 格式化 |
+| `pnpm format:check` | 检查代码格式是否合规 |
 | `pnpm changeset` | 创建变更集（版本发布前） |
 | `pnpm release` | 构建并发布所有包 |
 
@@ -212,6 +217,205 @@ pnpm changeset
 4. 在 vite.config.js 的 `external` 中添加 `element-plus`
 
 参考现有 `table-pro` 组件即可。
+
+## 工程化工具链
+
+项目已配置完整的工程化工具链，提交代码时会自动触发校验和格式化。
+
+### ESLint
+
+配置位于 `.eslintrc.js`，规则覆盖：
+- **Vue 3 推荐规则** (`plugin:vue/vue3-recommended`)
+- **Import 规范** (`plugin:import/recommended`)
+- **Prettier 集成** (避免与格式化冲突)
+
+```bash
+pnpm lint          # 自动修复问题
+pnpm lint:check    # 仅检查，不修复（CI 使用）
+```
+
+### Prettier
+
+配置位于 `.prettierrc`：
+
+| 配置项 | 值 | 说明 |
+|--------|-----|------|
+| `semi` | `false` | 省略分号 |
+| `singleQuote` | `true` | 单引号 |
+| `tabWidth` | `2` | 缩进 2 空格 |
+| `trailingComma` | `none` | 无尾随逗号 |
+| `endOfLine` | `lf` | 统一换行符为 LF |
+
+```bash
+pnpm format          # 格式化所有文件
+pnpm format:check    # 检查格式（CI 使用）
+```
+
+### Husky + lint-staged
+
+- **pre-commit**：提交前自动运行 `lint-staged`，对暂存文件执行 ESLint 和 Prettier
+- **commit-msg**：校验提交信息是否符合 Conventional Commits 规范
+
+```bash
+# 如需跳过 hook（紧急修复时使用，不推荐）
+git commit --no-verify -m "..."
+```
+
+### Commitizen
+
+交互式生成规范提交信息：
+
+```bash
+pnpm commit
+# 或直接使用 git commit（会触发 commit-msg hook 校验格式）
+```
+
+---
+
+## 单元测试
+
+使用 **Vitest** + `@vue/test-utils` + **jsdom** 进行组件单元测试。
+
+### 测试文件位置
+
+```
+packages/components/button/
+├── src/
+│   ├── button.vue
+│   └── index.js
+└── __tests__/
+    └── button.spec.js          # 组件测试
+```
+
+### 编写测试
+
+参考现有 [button.spec.js](./packages/components/button/__tests__/button.spec.js)：
+
+```js
+import { describe, it, expect } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { LtdButton } from '../src/index.js'
+
+describe('LtdButton', () => {
+  it('renders default slot content', () => {
+    const wrapper = mount(LtdButton, {
+      slots: { default: 'Click me' }
+    })
+    expect(wrapper.text()).toBe('Click me')
+  })
+
+  it('applies type classes correctly', () => {
+    const wrapper = mount(LtdButton, {
+      props: { type: 'primary' }
+    })
+    expect(wrapper.classes()).toContain('ltd-button--primary')
+  })
+})
+```
+
+### 运行测试
+
+```bash
+pnpm test                         # watch 模式，开发时使用
+pnpm test -- --run              # 单次运行（CI 使用）
+pnpm test -- --run --coverage   # 生成覆盖率报告
+pnpm test:ui                     # 图形化界面查看测试
+```
+
+覆盖率报告生成在 `coverage/` 目录下。
+
+---
+
+## TypeScript 类型声明
+
+虽然项目使用 JavaScript 开发，但为每个包提供了 `.d.ts` 类型声明文件，方便 TypeScript 用户使用。
+
+### 类型文件位置
+
+```
+packages/components/button/src/
+├── index.js          # JS 入口
+└── index.d.ts        # 类型声明
+```
+
+### 为新增组件添加类型声明
+
+1. 在 `src/` 目录下创建 `index.d.ts`
+2. 定义 `Props`、`Emits`、`Slots` 接口
+3. 导出 `DefineComponent` 类型
+4. 更新 `package.json` 的 `types` 字段指向该文件：
+
+```json
+{
+  "types": "src/index.d.ts"
+}
+```
+
+参考现有 [button/src/index.d.ts](./packages/components/button/src/index.d.ts)。
+
+---
+
+## CI/CD
+
+### GitHub Actions 工作流
+
+| 工作流 | 触发条件 | 说明 |
+|--------|----------|------|
+| **CI** | Push / PR 到 main/master | lint → test → build → docs:build |
+| **Release** | Push 到 main/master | 通过 Changesets 自动创建 Release PR 或发布到 npm |
+
+### CI 流程
+
+```
+Lint Check → Format Check → Unit Test (with coverage) → Build Packages → Build Docs
+```
+
+覆盖率报告自动上传至 Codecov。
+
+### 发布流程
+
+```bash
+# 1. 开发完成后创建变更集
+pnpm changeset
+
+# 2. 提交 changeset 文件
+# 3. Push 到 main，Release 工作流会自动创建版本提升 PR
+# 4. 合并 PR 后自动发布到 npm
+```
+
+---
+
+## Windows 开发注意事项
+
+### 换行符 (LF / CRLF)
+
+项目统一使用 **LF** 换行符。Windows 开发者可能遇到 Git 自动转换 CRLF 的警告：
+
+```
+warning: LF will be replaced by CRLF
+```
+
+这属于正常提示，不影响功能。如需避免，可配置：
+
+```bash
+git config core.autocrlf false
+```
+
+### Husky Hook 兼容性
+
+`.husky/commit-msg` 使用 shell 脚本调用 Node.js，已适配 Windows（通过 `.husky/commit-msg.js`）。若遇到 hook 执行问题，可临时跳过：
+
+```bash
+git commit --no-verify -m "..."
+```
+
+### 推荐工具
+
+- **Git**：使用 Git Bash 或 Windows Terminal
+- **编辑器**：VS Code + ESLint 插件 + Prettier 插件
+- **Node 版本管理**：nvm-windows
+
+---
 
 ## 代码规范
 
