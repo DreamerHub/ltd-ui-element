@@ -21,6 +21,7 @@ export default defineConfig({
     nav: [
       { text: '指南', link: '/guide/' },
       { text: '组件', link: '/components/button' },
+      { text: '预览', link: '/playground' },
       {
         text: '1.0.0',
         items: [

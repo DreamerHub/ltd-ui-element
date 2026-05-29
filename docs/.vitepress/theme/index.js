@@ -8,6 +8,9 @@ import './style.css'
 // 引入 LTD UI 组件
 import { LtdButton, LtdTablePro } from '@ltd-ui/ltd-ui'
 
+// 引入 Playground 组件
+import Playground from './components/Playground.vue'
+
 export default {
   extends: DefaultTheme,
   Layout: () => {
@@ -21,5 +24,7 @@ export default {
     // 注册 LTD UI 组件
     app.component('LtdButton', LtdButton)
     app.component('LtdTablePro', LtdTablePro)
+    // 注册 Playground
+    app.component('Playground', Playground)
   }
 }
