@@ -1,0 +1,10 @@
+dist/
+node_modules/
+.pnpm-store/
+*.min.js
+*.min.css
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+coverage/
+CHANGELOG.md
