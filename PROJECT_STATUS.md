@@ -93,6 +93,23 @@
 |------|------|------|
 | scripts/build.mjs | ✅ | 遍历所有包自动构建 |
 
+### 10. 代码规范与工程化（Milestone 1）
+
+| 配置项 | 状态 | 说明 |
+|--------|------|------|
+| ESLint 配置 | ✅ | `.eslintrc.js` + `eslint-plugin-vue` + `eslint-plugin-import` |
+| Prettier 配置 | ✅ | `.prettierrc` + `.prettierignore` |
+| Husky 配置 | ✅ | `.husky/pre-commit` + `.husky/commit-msg` |
+| lint-staged 配置 | ✅ | `package.json` 内嵌配置 |
+| Commitizen 配置 | ✅ | `cz-conventional-changelog` |
+| Vitest 配置 | ✅ | `vitest.config.js` + `@vue/test-utils` + `jsdom` |
+| Button 单元测试 | ✅ | `__tests__/button.spec.js`（13 个测试用例） |
+| TablePro 单元测试 | ✅ | `__tests__/table-pro.spec.js`（14 个测试用例） |
+| GitHub Actions CI | ✅ | `.github/workflows/ci.yml`（lint + test + build） |
+| GitHub Actions Release | ✅ | `.github/workflows/release.yml`（changesets 自动发布） |
+| Changesets 配置 | ✅ | `.changeset/config.json` |
+| TypeScript 类型声明 | ✅ | 4 个包的 `index.d.ts` 类型文件 |
+
 ---
 
 ## 🔧 推荐后续配置
@@ -101,20 +118,12 @@
 
 | 配置项 | 优先级 | 说明 | 参考文件/命令 |
 |--------|--------|------|--------------|
-| ESLint 配置 | 🔴 P0 | 统一代码风格，自动检测问题 | 创建 `.eslintrc.js` + `eslint-plugin-vue` |
-| Prettier 配置 | 🔴 P0 | 统一代码格式化 | 创建 `.prettierrc` |
-| TypeScript 支持 | 🟡 P1 | 为组件添加类型声明文件（.d.ts） | 每个包的 `dist/index.d.ts` |
-| Vitest 单元测试 | 🟡 P1 | 组件单元测试覆盖 | 创建 `vitest.config.js` + `__tests__/` 目录 |
-| GitHub Actions CI | 🟡 P1 | 自动化测试 + 构建 + 发布 | 创建 `.github/workflows/ci.yml` |
-| Changesets 配置 | 🟡 P1 | 版本管理和发布流程 | 运行 `pnpm changeset init` |
+| 代码覆盖率徽章 | 🟡 P1 | CI 中生成覆盖率报告并上传 Codecov | `codecov/codecov-action` |
 
 ### 中优先级（建议 1-2 个月内完成）
 
 | 配置项 | 优先级 | 说明 | 参考 |
 |--------|--------|------|------|
-| 代码覆盖率 | 🟢 P2 | 测试覆盖率报告（c8/v8） | Vitest 内置覆盖率 |
-| Husky + lint-staged | 🟢 P2 | 提交前自动 lint 和格式化 | `husky` + `lint-staged` |
-| Commitizen | 🟢 P2 | 交互式提交信息规范 | `commitizen` + `cz-conventional-changelog` |
 | 组件按需引入插件 | 🟢 P2 | unplugin 插件自动解析 | 参考 `unplugin-vue-components` |
 | 视觉回归测试 | 🟢 P2 | 防止 UI 意外变更 | Playwright / Chromatic |
 | Bundle 分析 | 🟢 P2 | 分析包体积 | `rollup-plugin-visualizer` |
@@ -143,11 +152,11 @@ Element封装      ████████████████████ 
 文档站点         ████████████████████ 100% ✅
 项目文档         ████████████████████ 100% ✅
 GitHub模板       ████████████████████ 100% ✅
-代码规范(ESLint) ░░░░░░░░░░░░░░░░░░░░   0% ⏳
-代码格式化       ░░░░░░░░░░░░░░░░░░░░   0% ⏳
-TypeScript      ░░░░░░░░░░░░░░░░░░░░   0% ⏳
-单元测试         ░░░░░░░░░░░░░░░░░░░░   0% ⏳
-CI/CD           ░░░░░░░░░░░░░░░░░░░░   0% ⏳
+代码规范(ESLint)  ████████████████████ 100% ✅
+代码格式化        ████████████████████ 100% ✅
+TypeScript        ████████████████████ 100% ✅
+单元测试          ████████████████████ 100% ✅
+CI/CD             ████████████████████ 100% ✅
 ```
 
 ---

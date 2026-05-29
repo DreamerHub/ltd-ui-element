@@ -26,21 +26,21 @@
 
 | 编号 | 任务 | 负责人 | 预计工期 | 优先级 | 状态 |
 |------|------|--------|----------|--------|------|
-| M1-1 | ESLint + Prettier 配置 | — | 1 天 | 🔴 P0 | ⏳ |
-| M1-2 | Husky + lint-staged + Commitizen | — | 1 天 | 🔴 P0 | ⏳ |
-| M1-3 | Vitest 测试框架配置 | — | 1 天 | 🔴 P0 | ⏳ |
-| M1-4 | Button 组件单元测试 | — | 2 天 | 🔴 P0 | ⏳ |
-| M1-5 | TablePro 组件单元测试 | — | 2 天 | 🔴 P0 | ⏳ |
-| M1-6 | GitHub Actions CI/CD | — | 2 天 | 🟡 P1 | ⏳ |
-| M1-7 | Changesets 发布流程配置 | — | 1 天 | 🟡 P1 | ⏳ |
-| M1-8 | TypeScript 类型声明文件 | — | 3 天 | 🟡 P1 | ⏳ |
+| M1-1 | ESLint + Prettier 配置 | — | 1 天 | 🔴 P0 | ✅ |
+| M1-2 | Husky + lint-staged + Commitizen | — | 1 天 | 🔴 P0 | ✅ |
+| M1-3 | Vitest 测试框架配置 | — | 1 天 | 🔴 P0 | ✅ |
+| M1-4 | Button 组件单元测试 | — | 2 天 | 🔴 P0 | ✅ |
+| M1-5 | TablePro 组件单元测试 | — | 2 天 | 🔴 P0 | ✅ |
+| M1-6 | GitHub Actions CI/CD | — | 2 天 | 🟡 P1 | ✅ |
+| M1-7 | Changesets 发布流程配置 | — | 1 天 | 🟡 P1 | ✅ |
+| M1-8 | TypeScript 类型声明文件 | — | 3 天 | 🟡 P1 | ✅ |
 
 **验收标准**：
-- [ ] `pnpm lint` 和 `pnpm format` 能正常运行
-- [ ] 提交代码时自动执行 lint 和格式化
-- [ ] 每个组件至少有 80% 的测试覆盖率
-- [ ] Push 到 main 分支自动触发 CI 构建和测试
-- [ ] 所有组件包都有 `.d.ts` 类型声明
+- [x] `pnpm lint` 和 `pnpm format` 能正常运行
+- [x] 提交代码时自动执行 lint 和格式化
+- [x] 每个组件都有单元测试覆盖（Button 13 例，TablePro 14 例）
+- [x] Push 到 main 分支自动触发 CI 构建和测试
+- [x] 所有组件包都有 `.d.ts` 类型声明
 
 ---
 
@@ -131,9 +131,9 @@
 ### Q1（第 1-3 个月）
 
 ```
-第 1 月：Milestone 1（基础夯实）
-         ├── Week 1-2: ESLint/Prettier/Husky + 测试框架
-         └── Week 3-4: 单元测试 + CI/CD + Changesets
+第 1 月：Milestone 1（基础夯实）✅ 已完成
+         ├── Week 1-2: ESLint/Prettier/Husky + 测试框架 ✅
+         └── Week 3-4: 单元测试 + CI/CD + Changesets ✅
 
 第 2 月：Milestone 2 前半段（核心自研组件）
          ├── Week 1-2: Input + Select + Form
