@@ -1,0 +1,99 @@
+// ============================================
+// LTD UI 设计令牌 (Design Tokens)
+// ============================================
+
+// ---- 颜色系统 ----
+
+// 主色
+$ltd-color-primary: #409eff !default;
+$ltd-color-primary-light-1: #53a8ff !default;
+$ltd-color-primary-light-2: #66b1ff !default;
+$ltd-color-primary-light-3: #79bbff !default;
+$ltd-color-primary-light-4: #8cc5ff !default;
+$ltd-color-primary-light-5: #a0cfff !default;
+$ltd-color-primary-light-6: #b3d8ff !default;
+$ltd-color-primary-light-7: #c6e2ff !default;
+$ltd-color-primary-light-8: #d9ecff !default;
+$ltd-color-primary-light-9: #ecf5ff !default;
+$ltd-color-primary-dark-2: #337ecc !default;
+
+// 成功色
+$ltd-color-success: #67c23a !default;
+$ltd-color-success-light: #e1f3d8 !default;
+$ltd-color-success-lighter: #f0f9eb !default;
+
+// 警告色
+$ltd-color-warning: #e6a23c !default;
+$ltd-color-warning-light: #faecd8 !default;
+$ltd-color-warning-lighter: #fdf6ec !default;
+
+// 危险色
+$ltd-color-danger: #f56c6c !default;
+$ltd-color-danger-light: #fde2e2 !default;
+$ltd-color-danger-lighter: #fef0f0 !default;
+
+// 信息色
+$ltd-color-info: #909399 !default;
+$ltd-color-info-light: #e9e9eb !default;
+$ltd-color-info-lighter: #f4f4f5 !default;
+
+// 中性色
+$ltd-color-white: #ffffff !default;
+$ltd-color-black: #000000 !default;
+$ltd-color-text-primary: #303133 !default;
+$ltd-color-text-regular: #606266 !default;
+$ltd-color-text-secondary: #909399 !default;
+$ltd-color-text-placeholder: #a8abb2 !default;
+$ltd-color-border: #dcdfe6 !default;
+$ltd-color-border-light: #e4e7ed !default;
+$ltd-color-border-lighter: #ebeef5 !default;
+$ltd-color-border-extra-light: #f2f6fc !default;
+$ltd-color-fill: #f0f2f5 !default;
+$ltd-color-fill-light: #f5f7fa !default;
+$ltd-color-fill-lighter: #fafafa !default;
+$ltd-color-fill-extra-light: #fafcff !default;
+$ltd-color-bg: #f5f7fa !default;
+
+// ---- 字体系统 ----
+$ltd-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+  'Microsoft YaHei', Arial, sans-serif !default;
+$ltd-font-size-extra-large: 20px !default;
+$ltd-font-size-large: 18px !default;
+$ltd-font-size-medium: 16px !default;
+$ltd-font-size-base: 14px !default;
+$ltd-font-size-small: 13px !default;
+$ltd-font-size-extra-small: 12px !default;
+$ltd-font-weight-primary: 500 !default;
+$ltd-font-line-height-primary: 24px !default;
+
+// ---- 尺寸系统 ----
+$ltd-border-radius-base: 4px !default;
+$ltd-border-radius-small: 2px !default;
+$ltd-border-radius-round: 20px !default;
+$ltd-border-radius-circle: 100% !default;
+
+// 组件尺寸
+$ltd-height-large: 40px !default;
+$ltd-height-default: 32px !default;
+$ltd-height-small: 24px !default;
+
+// ---- 间距系统 ----
+$ltd-spacing-extra-large: 32px !default;
+$ltd-spacing-large: 24px !default;
+$ltd-spacing-medium: 16px !default;
+$ltd-spacing-base: 12px !default;
+$ltd-spacing-small: 8px !default;
+$ltd-spacing-extra-small: 4px !default;
+
+// ---- 动画 ----
+$ltd-transition-duration: 0.3s !default;
+$ltd-transition-duration-fast: 0.2s !default;
+$ltd-transition-function-ease-in-out-bezier: cubic-bezier(0.645, 0.045, 0.355, 1) !default;
+$ltd-transition-function-fast-bezier: cubic-bezier(0.23, 1, 0.32, 1) !default;
+$ltd-transition-all: all $ltd-transition-duration $ltd-transition-function-ease-in-out-bezier !default;
+$ltd-transition-fade: opacity $ltd-transition-duration $ltd-transition-function-fast-bezier !default;
+
+// ---- z-index 层级 ----
+$ltd-index-normal: 1 !default;
+$ltd-index-top: 1000 !default;
+$ltd-index-popper: 2000 !default;
