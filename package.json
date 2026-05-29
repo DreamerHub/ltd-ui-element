@@ -1,0 +1,48 @@
+{
+  "name": "ltd-ui-element",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LTD UI - A Vue 3 component library with original components and Element Plus wrappers",
+  "scripts": {
+    "dev": "pnpm -F ltd-ui-docs dev",
+    "docs:build": "pnpm -F ltd-ui-docs build",
+    "docs:preview": "pnpm -F ltd-ui-docs preview",
+    "build": "pnpm -r --filter='./packages/**' run build",
+    "build:components": "pnpm -r --filter='./packages/components/*' run build",
+    "build:wrappers": "pnpm -r --filter='./packages/element-wrappers/*' run build",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix",
+    "format": "prettier --write \"packages/**/*.{js,vue,scss,css,md}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish",
+    "clean": "pnpm -r exec rm -rf dist node_modules && rm -rf node_modules",
+    "bootstrap": "pnpm install"
+  },
+  "keywords": [
+    "vue3",
+    "vue",
+    "component",
+    "ui",
+    "element-plus",
+    "ltd-ui"
+  ],
+  "author": "LTD Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.22.0",
+    "prettier": "^3.2.5",
+    "sass": "^1.71.0",
+    "vite": "^5.1.0",
+    "vitest": "^1.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}

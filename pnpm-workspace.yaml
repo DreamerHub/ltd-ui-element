@@ -1,0 +1,5 @@
+packages:
+  - 'packages/*'
+  - 'packages/components/*'
+  - 'packages/element-wrappers/*'
+  - 'docs'
