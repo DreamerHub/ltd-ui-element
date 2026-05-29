@@ -57,23 +57,23 @@ ltd-ui-element/
 
 ## 常用命令
 
-| 命令 | 说明 |
-|------|------|
-| `pnpm dev` | 启动文档站点开发服务器 |
-| `pnpm docs:build` | 构建文档站点 |
-| `pnpm build` | 构建所有组件包 |
-| `pnpm build:components` | 仅构建自研组件 |
-| `pnpm build:wrappers` | 仅构建封装组件 |
-| `pnpm test` | 运行单元测试（watch 模式） |
-| `pnpm test -- --run` | 运行单元测试（单次运行） |
-| `pnpm test -- --run --coverage` | 运行测试并生成覆盖率报告 |
-| `pnpm test:ui` | 以 UI 模式运行 Vitest |
-| `pnpm lint` | 运行 ESLint 并自动修复 |
-| `pnpm lint:check` | 运行 ESLint 仅检查不修复 |
-| `pnpm format` | 运行 Prettier 格式化 |
-| `pnpm format:check` | 检查代码格式是否合规 |
-| `pnpm changeset` | 创建变更集（版本发布前） |
-| `pnpm release` | 构建并发布所有包 |
+| 命令                            | 说明                       |
+| ------------------------------- | -------------------------- |
+| `pnpm dev`                      | 启动文档站点开发服务器     |
+| `pnpm docs:build`               | 构建文档站点               |
+| `pnpm build`                    | 构建所有组件包             |
+| `pnpm build:components`         | 仅构建自研组件             |
+| `pnpm build:wrappers`           | 仅构建封装组件             |
+| `pnpm test`                     | 运行单元测试（watch 模式） |
+| `pnpm test -- --run`            | 运行单元测试（单次运行）   |
+| `pnpm test -- --run --coverage` | 运行测试并生成覆盖率报告   |
+| `pnpm test:ui`                  | 以 UI 模式运行 Vitest      |
+| `pnpm lint`                     | 运行 ESLint 并自动修复     |
+| `pnpm lint:check`               | 运行 ESLint 仅检查不修复   |
+| `pnpm format`                   | 运行 Prettier 格式化       |
+| `pnpm format:check`             | 检查代码格式是否合规       |
+| `pnpm changeset`                | 创建变更集（版本发布前）   |
+| `pnpm release`                  | 构建并发布所有包           |
 
 ## 新增一个自研组件
 
@@ -161,11 +161,11 @@ const inputClasses = computed(() => [
   { 'is-disabled': props.disabled }
 ])
 
-const handleInput = (e) => {
+const handleInput = e => {
   emit('update:modelValue', e.target.value)
 }
 
-const handleBlur = (e) => {
+const handleBlur = e => {
   emit('blur', e)
 }
 </script>
@@ -177,7 +177,7 @@ const handleBlur = (e) => {
 // packages/components/input/src/index.js
 import LtdInput from './input.vue'
 
-LtdInput.install = (app) => {
+LtdInput.install = app => {
   app.component(LtdInput.name, LtdInput)
 }
 
@@ -225,6 +225,7 @@ pnpm changeset
 ### ESLint
 
 配置位于 `.eslintrc.js`，规则覆盖：
+
 - **Vue 3 推荐规则** (`plugin:vue/vue3-recommended`)
 - **Import 规范** (`plugin:import/recommended`)
 - **Prettier 集成** (避免与格式化冲突)
@@ -238,13 +239,13 @@ pnpm lint:check    # 仅检查，不修复（CI 使用）
 
 配置位于 `.prettierrc`：
 
-| 配置项 | 值 | 说明 |
-|--------|-----|------|
-| `semi` | `false` | 省略分号 |
-| `singleQuote` | `true` | 单引号 |
-| `tabWidth` | `2` | 缩进 2 空格 |
-| `trailingComma` | `none` | 无尾随逗号 |
-| `endOfLine` | `lf` | 统一换行符为 LF |
+| 配置项          | 值      | 说明            |
+| --------------- | ------- | --------------- |
+| `semi`          | `false` | 省略分号        |
+| `singleQuote`   | `true`  | 单引号          |
+| `tabWidth`      | `2`     | 缩进 2 空格     |
+| `trailingComma` | `none`  | 无尾随逗号      |
+| `endOfLine`     | `lf`    | 统一换行符为 LF |
 
 ```bash
 pnpm format          # 格式化所有文件
@@ -359,10 +360,10 @@ packages/components/button/src/
 
 ### GitHub Actions 工作流
 
-| 工作流 | 触发条件 | 说明 |
-|--------|----------|------|
-| **CI** | Push / PR 到 main/master | lint → test → build → docs:build |
-| **Release** | Push 到 main/master | 通过 Changesets 自动创建 Release PR 或发布到 npm |
+| 工作流      | 触发条件                 | 说明                                             |
+| ----------- | ------------------------ | ------------------------------------------------ |
+| **CI**      | Push / PR 到 main/master | lint → test → build → docs:build                 |
+| **Release** | Push 到 main/master      | 通过 Changesets 自动创建 Release PR 或发布到 npm |
 
 ### CI 流程
 
@@ -485,16 +486,16 @@ const emit = defineEmits(['eventName'])
 
 常用 type：
 
-| 类型 | 说明 |
-|------|------|
-| `feat` | 新功能 |
-| `fix` | Bug 修复 |
-| `docs` | 文档更新 |
-| `style` | 代码格式（不影响功能） |
-| `refactor` | 重构 |
-| `perf` | 性能优化 |
-| `test` | 测试相关 |
-| `chore` | 构建/工具链 |
+| 类型       | 说明                   |
+| ---------- | ---------------------- |
+| `feat`     | 新功能                 |
+| `fix`      | Bug 修复               |
+| `docs`     | 文档更新               |
+| `style`    | 代码格式（不影响功能） |
+| `refactor` | 重构                   |
+| `perf`     | 性能优化               |
+| `test`     | 测试相关               |
+| `chore`    | 构建/工具链            |
 
 示例：
 

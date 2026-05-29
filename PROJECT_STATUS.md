@@ -8,107 +8,107 @@
 
 ### 1. 项目架构
 
-| 配置项 | 状态 | 说明 |
-|--------|------|------|
-| Monorepo 架构 | ✅ | pnpm workspace 管理多包 |
-| 根 package.json | ✅ | 工作区配置、scripts、engines |
-| pnpm-workspace.yaml | ✅ | 定义 workspace 包范围 |
-| .gitignore | ✅ | 排除 node_modules、dist、IDE 配置等 |
+| 配置项              | 状态 | 说明                                |
+| ------------------- | ---- | ----------------------------------- |
+| Monorepo 架构       | ✅   | pnpm workspace 管理多包             |
+| 根 package.json     | ✅   | 工作区配置、scripts、engines        |
+| pnpm-workspace.yaml | ✅   | 定义 workspace 包范围               |
+| .gitignore          | ✅   | 排除 node_modules、dist、IDE 配置等 |
 
 ### 2. 核心包（packages/core）
 
-| 配置项 | 状态 | 说明 |
-|--------|------|------|
-| package.json | ✅ | 独立包配置，支持 ESM/CJS 导出 |
-| vite.config.js | ✅ | 库模式构建配置 |
-| 工具函数 | ✅ | generateId、classNames、debounce、throttle |
-| SCSS 变量系统 | ✅ | 颜色、字体、尺寸、间距、动画、z-index |
-| SCSS Mixins | ✅ | BEM 命名辅助、clearfix、ellipsis、flex-center |
-| 样式入口 | ✅ | variables.scss + mixins.scss 统一转发 |
+| 配置项         | 状态 | 说明                                          |
+| -------------- | ---- | --------------------------------------------- |
+| package.json   | ✅   | 独立包配置，支持 ESM/CJS 导出                 |
+| vite.config.js | ✅   | 库模式构建配置                                |
+| 工具函数       | ✅   | generateId、classNames、debounce、throttle    |
+| SCSS 变量系统  | ✅   | 颜色、字体、尺寸、间距、动画、z-index         |
+| SCSS Mixins    | ✅   | BEM 命名辅助、clearfix、ellipsis、flex-center |
+| 样式入口       | ✅   | variables.scss + mixins.scss 统一转发         |
 
 ### 3. 自研组件（packages/components/button）
 
-| 配置项 | 状态 | 说明 |
-|--------|------|------|
-| package.json | ✅ | 独立 npm 包配置 |
-| vite.config.js | ✅ | 库模式 + external vue |
-| 组件实现 | ✅ | Button.vue（7种类型、3种尺寸、plain/round/circle/loading/disabled） |
-| 入口文件 | ✅ | index.js（导出 + install 方法） |
-| 组件样式 | ✅ | scoped SCSS，BEM 命名 |
+| 配置项         | 状态 | 说明                                                                |
+| -------------- | ---- | ------------------------------------------------------------------- |
+| package.json   | ✅   | 独立 npm 包配置                                                     |
+| vite.config.js | ✅   | 库模式 + external vue                                               |
+| 组件实现       | ✅   | Button.vue（7种类型、3种尺寸、plain/round/circle/loading/disabled） |
+| 入口文件       | ✅   | index.js（导出 + install 方法）                                     |
+| 组件样式       | ✅   | scoped SCSS，BEM 命名                                               |
 
 ### 4. Element Plus 封装（packages/element-wrappers/table-pro）
 
-| 配置项 | 状态 | 说明 |
-|--------|------|------|
-| package.json | ✅ | 独立 npm 包，peerDependencies 包含 element-plus |
-| vite.config.js | ✅ | 库模式 + external vue/element-plus |
-| 组件实现 | ✅ | TablePro.vue（分页、选择、序号、操作列、列设置、工具栏） |
-| 入口文件 | ✅ | index.js（导出 + install 方法） |
-| 组件样式 | ✅ | scoped SCSS |
+| 配置项         | 状态 | 说明                                                     |
+| -------------- | ---- | -------------------------------------------------------- |
+| package.json   | ✅   | 独立 npm 包，peerDependencies 包含 element-plus          |
+| vite.config.js | ✅   | 库模式 + external vue/element-plus                       |
+| 组件实现       | ✅   | TablePro.vue（分页、选择、序号、操作列、列设置、工具栏） |
+| 入口文件       | ✅   | index.js（导出 + install 方法）                          |
+| 组件样式       | ✅   | scoped SCSS                                              |
 
 ### 5. 全量入口包（packages/ltd-ui）
 
-| 配置项 | 状态 | 说明 |
-|--------|------|------|
-| package.json | ✅ | 聚合所有组件作为依赖 |
-| vite.config.js | ✅ | 库模式构建 |
-| 入口文件 | ✅ | index.js（统一注册所有组件 + 样式） |
+| 配置项         | 状态 | 说明                                |
+| -------------- | ---- | ----------------------------------- |
+| package.json   | ✅   | 聚合所有组件作为依赖                |
+| vite.config.js | ✅   | 库模式构建                          |
+| 入口文件       | ✅   | index.js（统一注册所有组件 + 样式） |
 
 ### 6. 文档站点（docs/）
 
-| 配置项 | 状态 | 说明 |
-|--------|------|------|
-| package.json | ✅ | Vitepress 文档站点依赖 |
-| Vitepress 配置 | ✅ | config.js（导航、侧边栏、搜索、主题色） |
-| 自定义主题 | ✅ | theme/index.js（注册 Element Plus + LTD UI 组件） |
-| 主题样式 | ✅ | theme/style.css（VP 变量覆盖、API 表格优化） |
-| 首页 | ✅ | index.md（Hero + Features） |
-| 指南文档 | ✅ | 介绍、安装、快速开始、主题定制、开发指南、更新日志、贡献指南 |
-| 组件文档 | ✅ | Button、TablePro 完整 API 文档 |
-| 文档 README | ✅ | 本地开发/构建说明 |
+| 配置项         | 状态 | 说明                                                         |
+| -------------- | ---- | ------------------------------------------------------------ |
+| package.json   | ✅   | Vitepress 文档站点依赖                                       |
+| Vitepress 配置 | ✅   | config.js（导航、侧边栏、搜索、主题色）                      |
+| 自定义主题     | ✅   | theme/index.js（注册 Element Plus + LTD UI 组件）            |
+| 主题样式       | ✅   | theme/style.css（VP 变量覆盖、API 表格优化）                 |
+| 首页           | ✅   | index.md（Hero + Features）                                  |
+| 指南文档       | ✅   | 介绍、安装、快速开始、主题定制、开发指南、更新日志、贡献指南 |
+| 组件文档       | ✅   | Button、TablePro 完整 API 文档                               |
+| 文档 README    | ✅   | 本地开发/构建说明                                            |
 
 ### 7. 项目文档（根目录）
 
-| 文档 | 状态 | 用途 |
-|------|------|------|
-| README.md | ✅ | 项目总览、徽章、快速开始、项目结构 |
-| CLAUDE.md | ✅ | AI/新开发者速查手册 |
-| CONTRIBUTING.md | ✅ | 贡献流程、分支命名、提交规范 |
-| DEVELOPMENT.md | ✅ | 环境搭建、新增组件详细流程、代码规范 |
-| CHANGELOG.md | ✅ | 版本变更记录（初始版本） |
-| CODE_OF_CONDUCT.md | ✅ | 社区行为准则 |
-| LICENSE | ✅ | MIT 许可证 |
+| 文档               | 状态 | 用途                                 |
+| ------------------ | ---- | ------------------------------------ |
+| README.md          | ✅   | 项目总览、徽章、快速开始、项目结构   |
+| CLAUDE.md          | ✅   | AI/新开发者速查手册                  |
+| CONTRIBUTING.md    | ✅   | 贡献流程、分支命名、提交规范         |
+| DEVELOPMENT.md     | ✅   | 环境搭建、新增组件详细流程、代码规范 |
+| CHANGELOG.md       | ✅   | 版本变更记录（初始版本）             |
+| CODE_OF_CONDUCT.md | ✅   | 社区行为准则                         |
+| LICENSE            | ✅   | MIT 许可证                           |
 
 ### 8. GitHub 模板
 
-| 模板 | 状态 | 用途 |
-|------|------|------|
-| PULL_REQUEST_TEMPLATE.md | ✅ | PR 提交模板 |
-| ISSUE_TEMPLATE/bug_report.md | ✅ | Bug 报告模板 |
-| ISSUE_TEMPLATE/feature_request.md | ✅ | 功能请求模板 |
+| 模板                              | 状态 | 用途         |
+| --------------------------------- | ---- | ------------ |
+| PULL_REQUEST_TEMPLATE.md          | ✅   | PR 提交模板  |
+| ISSUE_TEMPLATE/bug_report.md      | ✅   | Bug 报告模板 |
+| ISSUE_TEMPLATE/feature_request.md | ✅   | 功能请求模板 |
 
 ### 9. 构建脚本
 
-| 脚本 | 状态 | 说明 |
-|------|------|------|
-| scripts/build.mjs | ✅ | 遍历所有包自动构建 |
+| 脚本              | 状态 | 说明               |
+| ----------------- | ---- | ------------------ |
+| scripts/build.mjs | ✅   | 遍历所有包自动构建 |
 
 ### 10. 代码规范与工程化（Milestone 1）
 
-| 配置项 | 状态 | 说明 |
-|--------|------|------|
-| ESLint 配置 | ✅ | `.eslintrc.js` + `eslint-plugin-vue` + `eslint-plugin-import` |
-| Prettier 配置 | ✅ | `.prettierrc` + `.prettierignore` |
-| Husky 配置 | ✅ | `.husky/pre-commit` + `.husky/commit-msg` |
-| lint-staged 配置 | ✅ | `package.json` 内嵌配置 |
-| Commitizen 配置 | ✅ | `cz-conventional-changelog` |
-| Vitest 配置 | ✅ | `vitest.config.js` + `@vue/test-utils` + `jsdom` |
-| Button 单元测试 | ✅ | `__tests__/button.spec.js`（13 个测试用例） |
-| TablePro 单元测试 | ✅ | `__tests__/table-pro.spec.js`（14 个测试用例） |
-| GitHub Actions CI | ✅ | `.github/workflows/ci.yml`（lint + test + build） |
-| GitHub Actions Release | ✅ | `.github/workflows/release.yml`（changesets 自动发布） |
-| Changesets 配置 | ✅ | `.changeset/config.json` |
-| TypeScript 类型声明 | ✅ | 4 个包的 `index.d.ts` 类型文件 |
+| 配置项                 | 状态 | 说明                                                          |
+| ---------------------- | ---- | ------------------------------------------------------------- |
+| ESLint 配置            | ✅   | `.eslintrc.js` + `eslint-plugin-vue` + `eslint-plugin-import` |
+| Prettier 配置          | ✅   | `.prettierrc` + `.prettierignore`                             |
+| Husky 配置             | ✅   | `.husky/pre-commit` + `.husky/commit-msg`                     |
+| lint-staged 配置       | ✅   | `package.json` 内嵌配置                                       |
+| Commitizen 配置        | ✅   | `cz-conventional-changelog`                                   |
+| Vitest 配置            | ✅   | `vitest.config.js` + `@vue/test-utils` + `jsdom`              |
+| Button 单元测试        | ✅   | `__tests__/button.spec.js`（13 个测试用例）                   |
+| TablePro 单元测试      | ✅   | `__tests__/table-pro.spec.js`（14 个测试用例）                |
+| GitHub Actions CI      | ✅   | `.github/workflows/ci.yml`（lint + test + build）             |
+| GitHub Actions Release | ✅   | `.github/workflows/release.yml`（changesets 自动发布）        |
+| Changesets 配置        | ✅   | `.changeset/config.json`                                      |
+| TypeScript 类型声明    | ✅   | 4 个包的 `index.d.ts` 类型文件                                |
 
 ---
 
@@ -116,28 +116,28 @@
 
 ### 高优先级（建议近期完成）
 
-| 配置项 | 优先级 | 说明 | 参考文件/命令 |
-|--------|--------|------|--------------|
-| 代码覆盖率徽章 | 🟡 P1 | CI 中生成覆盖率报告并上传 Codecov | `codecov/codecov-action` |
+| 配置项         | 优先级 | 说明                              | 参考文件/命令            |
+| -------------- | ------ | --------------------------------- | ------------------------ |
+| 代码覆盖率徽章 | 🟡 P1  | CI 中生成覆盖率报告并上传 Codecov | `codecov/codecov-action` |
 
 ### 中优先级（建议 1-2 个月内完成）
 
-| 配置项 | 优先级 | 说明 | 参考 |
-|--------|--------|------|------|
-| 组件按需引入插件 | 🟢 P2 | unplugin 插件自动解析 | 参考 `unplugin-vue-components` |
-| 视觉回归测试 | 🟢 P2 | 防止 UI 意外变更 | Playwright / Chromatic |
-| Bundle 分析 | 🟢 P2 | 分析包体积 | `rollup-plugin-visualizer` |
+| 配置项           | 优先级 | 说明                  | 参考                           |
+| ---------------- | ------ | --------------------- | ------------------------------ |
+| 组件按需引入插件 | 🟢 P2  | unplugin 插件自动解析 | 参考 `unplugin-vue-components` |
+| 视觉回归测试     | 🟢 P2  | 防止 UI 意外变更      | Playwright / Chromatic         |
+| Bundle 分析      | 🟢 P2  | 分析包体积            | `rollup-plugin-visualizer`     |
 
 ### 低优先级（长期规划）
 
-| 配置项 | 优先级 | 说明 | 参考 |
-|--------|--------|------|------|
-| 暗色主题 | 🔵 P3 | 完整的 dark mode 支持 | CSS 变量 + `prefers-color-scheme` |
-| 国际化 (i18n) | 🔵 P3 | 多语言支持 | Vue I18n |
-| SSR 支持 | 🔵 P3 | Nuxt 3 / 服务端渲染兼容 | 组件避免使用 `window`/`document` |
-| CDN 构建 | 🔵 P3 | UMD 格式浏览器直接引入 | Vite `formats: ['umd']` |
-| 在线 Playground | 🔵 P3 | 浏览器中实时编辑组件 | WebContainer / CodeSandbox |
-| Figma 设计令牌同步 | 🔵 P3 | 设计稿与代码变量同步 | Design Tokens / Style Dictionary |
+| 配置项             | 优先级 | 说明                    | 参考                              |
+| ------------------ | ------ | ----------------------- | --------------------------------- |
+| 暗色主题           | 🔵 P3  | 完整的 dark mode 支持   | CSS 变量 + `prefers-color-scheme` |
+| 国际化 (i18n)      | 🔵 P3  | 多语言支持              | Vue I18n                          |
+| SSR 支持           | 🔵 P3  | Nuxt 3 / 服务端渲染兼容 | 组件避免使用 `window`/`document`  |
+| CDN 构建           | 🔵 P3  | UMD 格式浏览器直接引入  | Vite `formats: ['umd']`           |
+| 在线 Playground    | 🔵 P3  | 浏览器中实时编辑组件    | WebContainer / CodeSandbox        |
+| Figma 设计令牌同步 | 🔵 P3  | 设计稿与代码变量同步    | Design Tokens / Style Dictionary  |
 
 ---
 

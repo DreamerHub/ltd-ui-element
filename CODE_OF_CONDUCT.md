@@ -71,4 +71,3 @@
 ## 来源
 
 本行为准则改编自 [Contributor Covenant](https://www.contributor-covenant.org) 2.1 版。
-

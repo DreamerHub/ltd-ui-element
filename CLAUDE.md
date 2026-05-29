@@ -6,13 +6,13 @@
 
 LTD UI 是一个基于 Vue 3 + SCSS 的组件库，采用 **Monorepo (pnpm workspace)** 架构。
 
-| 属性 | 说明 |
-|------|------|
-| 技术栈 | Vue 3, SCSS, Vite, Vitepress |
-| 包管理 | pnpm workspace |
-| 组件类型 | 自研 + Element Plus 封装 |
-| 发布方式 | 每个组件独立 npm 包 |
-| 文档 | Vitepress |
+| 属性     | 说明                         |
+| -------- | ---------------------------- |
+| 技术栈   | Vue 3, SCSS, Vite, Vitepress |
+| 包管理   | pnpm workspace               |
+| 组件类型 | 自研 + Element Plus 封装     |
+| 发布方式 | 每个组件独立 npm 包          |
+| 文档     | Vitepress                    |
 
 ## 目录结构速查
 
@@ -65,11 +65,11 @@ pnpm changeset
 
 ### 组件命名
 
-| 层级 | 格式 | 示例 |
-|------|------|------|
-| npm 包名 | `@ltd-ui/<kebab-name>` | `@ltd-ui/button` |
-| Vue 组件 name | `Ltd<PascalCase>` | `LtdButton` |
-| DOM class | `ltd-<kebab-name>` | `.ltd-button` |
+| 层级          | 格式                   | 示例             |
+| ------------- | ---------------------- | ---------------- |
+| npm 包名      | `@ltd-ui/<kebab-name>` | `@ltd-ui/button` |
+| Vue 组件 name | `Ltd<PascalCase>`      | `LtdButton`      |
+| DOM class     | `ltd-<kebab-name>`     | `.ltd-button`    |
 
 ### 每个组件包的必备结构
 
@@ -87,9 +87,9 @@ pnpm changeset
 ```json
 {
   "name": "@ltd-ui/button",
-  "main": "dist/index.cjs",      // CJS 入口
-  "module": "dist/index.mjs",    // ESM 入口
-  "style": "dist/style.css",     // CSS 入口（Vite 提取）
+  "main": "dist/index.cjs", // CJS 入口
+  "module": "dist/index.mjs", // ESM 入口
+  "style": "dist/style.css", // CSS 入口（Vite 提取）
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -111,13 +111,13 @@ export default defineConfig({
     lib: {
       entry: './src/index.js',
       formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`
+      fileName: format => `index.${format === 'es' ? 'mjs' : 'cjs'}`
     },
     rollupOptions: {
-      external: ['vue', 'element-plus', '@ltd-ui/core'],
+      external: ['vue', 'element-plus', '@ltd-ui/core']
       // element-plus 只在 wrappers 中需要
     },
-    cssCodeSplit: false  // 样式合并到单个文件
+    cssCodeSplit: false // 样式合并到单个文件
   }
 })
 ```
@@ -156,12 +156,12 @@ $ltd-height-small: 24px;
 
 ## 常用命令
 
-| 命令 | 用途 |
-|------|------|
-| `pnpm dev` | 启动文档站点 |
-| `pnpm build` | 构建所有包 |
-| `pnpm changeset` | 创建版本变更记录 |
-| `pnpm release` | 构建 + 发布到 npm |
+| 命令             | 用途              |
+| ---------------- | ----------------- |
+| `pnpm dev`       | 启动文档站点      |
+| `pnpm build`     | 构建所有包        |
+| `pnpm changeset` | 创建版本变更记录  |
+| `pnpm release`   | 构建 + 发布到 npm |
 
 ## 调试提示
 
