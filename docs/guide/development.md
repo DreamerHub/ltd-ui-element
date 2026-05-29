@@ -57,18 +57,18 @@ ltd-ui-element/
 
 ## 常用命令
 
-| 命令 | 说明 |
-|------|------|
-| `pnpm dev` | 启动文档站点开发服务器 |
-| `pnpm docs:build` | 构建文档站点 |
-| `pnpm build` | 构建所有组件包 |
-| `pnpm build:components` | 仅构建自研组件 |
-| `pnpm build:wrappers` | 仅构建封装组件 |
-| `pnpm test` | 运行单元测试 |
-| `pnpm lint` | 运行 ESLint |
-| `pnpm format` | 运行 Prettier 格式化 |
-| `pnpm changeset` | 创建变更集（版本发布前） |
-| `pnpm release` | 构建并发布所有包 |
+| 命令                    | 说明                     |
+| ----------------------- | ------------------------ |
+| `pnpm dev`              | 启动文档站点开发服务器   |
+| `pnpm docs:build`       | 构建文档站点             |
+| `pnpm build`            | 构建所有组件包           |
+| `pnpm build:components` | 仅构建自研组件           |
+| `pnpm build:wrappers`   | 仅构建封装组件           |
+| `pnpm test`             | 运行单元测试             |
+| `pnpm lint`             | 运行 ESLint              |
+| `pnpm format`           | 运行 Prettier 格式化     |
+| `pnpm changeset`        | 创建变更集（版本发布前） |
+| `pnpm release`          | 构建并发布所有包         |
 
 ## 新增一个自研组件
 
@@ -156,11 +156,11 @@ const inputClasses = computed(() => [
   { 'is-disabled': props.disabled }
 ])
 
-const handleInput = (e) => {
+const handleInput = e => {
   emit('update:modelValue', e.target.value)
 }
 
-const handleBlur = (e) => {
+const handleBlur = e => {
   emit('blur', e)
 }
 </script>
@@ -172,7 +172,7 @@ const handleBlur = (e) => {
 // packages/components/input/src/index.js
 import LtdInput from './input.vue'
 
-LtdInput.install = (app) => {
+LtdInput.install = app => {
   app.component(LtdInput.name, LtdInput)
 }
 
@@ -281,16 +281,16 @@ const emit = defineEmits(['eventName'])
 
 常用 type：
 
-| 类型 | 说明 |
-|------|------|
-| `feat` | 新功能 |
-| `fix` | Bug 修复 |
-| `docs` | 文档更新 |
-| `style` | 代码格式（不影响功能） |
-| `refactor` | 重构 |
-| `perf` | 性能优化 |
-| `test` | 测试相关 |
-| `chore` | 构建/工具链 |
+| 类型       | 说明                   |
+| ---------- | ---------------------- |
+| `feat`     | 新功能                 |
+| `fix`      | Bug 修复               |
+| `docs`     | 文档更新               |
+| `style`    | 代码格式（不影响功能） |
+| `refactor` | 重构                   |
+| `perf`     | 性能优化               |
+| `test`     | 测试相关               |
+| `chore`    | 构建/工具链            |
 
 示例：
 

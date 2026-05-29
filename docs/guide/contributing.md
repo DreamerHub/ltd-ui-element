@@ -38,12 +38,12 @@ git checkout -b feat/your-feature-name
 
 分支命名规范：
 
-| 类型 | 命名示例 |
-|------|----------|
-| 新功能 | `feat/button-loading` |
+| 类型     | 命名示例               |
+| -------- | ---------------------- |
+| 新功能   | `feat/button-loading`  |
 | Bug 修复 | `fix/table-pagination` |
-| 文档 | `docs/install-guide` |
-| 重构 | `refactor/core-utils` |
+| 文档     | `docs/install-guide`   |
+| 重构     | `refactor/core-utils`  |
 
 #### 3. 开发
 

@@ -126,28 +126,28 @@ Button 组件提供除了默认值以外的三种尺寸。
 
 ### Props
 
-| 属性 | 说明 | 类型 | 可选值 | 默认值 |
-|------|------|------|--------|--------|
-| `size` | 尺寸 | `string` | `large` / `default` / `small` | `default` |
-| `type` | 类型 | `string` | `default` / `primary` / `success` / `warning` / `danger` / `info` / `text` | `default` |
-| `plain` | 是否朴素按钮 | `boolean` | — | `false` |
-| `round` | 是否圆角按钮 | `boolean` | — | `false` |
-| `circle` | 是否圆形按钮 | `boolean` | — | `false` |
-| `loading` | 是否加载中状态 | `boolean` | — | `false` |
-| `disabled` | 是否禁用状态 | `boolean` | — | `false` |
-| `icon` | 图标类名 | `string` | — | — |
-| `nativeType` | 原生 type 属性 | `string` | `button` / `submit` / `reset` | `button` |
-| `autofocus` | 是否默认聚焦 | `boolean` | — | `false` |
+| 属性         | 说明           | 类型      | 可选值                                                                     | 默认值    |
+| ------------ | -------------- | --------- | -------------------------------------------------------------------------- | --------- |
+| `size`       | 尺寸           | `string`  | `large` / `default` / `small`                                              | `default` |
+| `type`       | 类型           | `string`  | `default` / `primary` / `success` / `warning` / `danger` / `info` / `text` | `default` |
+| `plain`      | 是否朴素按钮   | `boolean` | —                                                                          | `false`   |
+| `round`      | 是否圆角按钮   | `boolean` | —                                                                          | `false`   |
+| `circle`     | 是否圆形按钮   | `boolean` | —                                                                          | `false`   |
+| `loading`    | 是否加载中状态 | `boolean` | —                                                                          | `false`   |
+| `disabled`   | 是否禁用状态   | `boolean` | —                                                                          | `false`   |
+| `icon`       | 图标类名       | `string`  | —                                                                          | —         |
+| `nativeType` | 原生 type 属性 | `string`  | `button` / `submit` / `reset`                                              | `button`  |
+| `autofocus`  | 是否默认聚焦   | `boolean` | —                                                                          | `false`   |
 
 ### Events
 
-| 事件名 | 说明 | 回调参数 |
-|--------|------|----------|
+| 事件名  | 说明           | 回调参数              |
+| ------- | -------------- | --------------------- |
 | `click` | 点击按钮时触发 | `(event: MouseEvent)` |
 
 ### Slots
 
-| 插槽名 | 说明 |
-|--------|------|
-| `default` | 按钮内容 |
-| `icon` | 自定义图标 |
+| 插槽名    | 说明       |
+| --------- | ---------- |
+| `default` | 按钮内容   |
+| `icon`    | 自定义图标 |

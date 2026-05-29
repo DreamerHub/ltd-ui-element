@@ -75,7 +75,7 @@ export default defineConfig({
     Components({
       // 自动导入 LTD UI 组件
       resolvers: [
-        (name) => {
+        name => {
           // 匹配 ltd- 开头的组件
           if (name.startsWith('Ltd')) {
             const componentName = name.slice(3).toLowerCase()

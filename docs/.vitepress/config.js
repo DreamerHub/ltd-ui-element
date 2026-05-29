@@ -57,23 +57,17 @@ export default defineConfig({
         {
           text: '基础组件',
           collapsed: false,
-          items: [
-            { text: 'Button 按钮', link: '/components/button' }
-          ]
+          items: [{ text: 'Button 按钮', link: '/components/button' }]
         },
         {
           text: 'Element Plus 封装',
           collapsed: false,
-          items: [
-            { text: 'TablePro 高级表格', link: '/components/table-pro' }
-          ]
+          items: [{ text: 'TablePro 高级表格', link: '/components/table-pro' }]
         }
       ]
     },
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/your-org/ltd-ui-element' }
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/your-org/ltd-ui-element' }],
 
     footer: {
       message: 'Released under the MIT License.',
@@ -105,7 +99,10 @@ export default defineConfig({
       alias: {
         '@ltd-ui/core': resolve(__dirname, '../../packages/core/src/index.js'),
         '@ltd-ui/button': resolve(__dirname, '../../packages/components/button/src/index.js'),
-        '@ltd-ui/table-pro': resolve(__dirname, '../../packages/element-wrappers/table-pro/src/index.js'),
+        '@ltd-ui/table-pro': resolve(
+          __dirname,
+          '../../packages/element-wrappers/table-pro/src/index.js'
+        ),
         '@ltd-ui/ltd-ui': resolve(__dirname, '../../packages/ltd-ui/src/index.js')
       }
     },
@@ -120,7 +117,7 @@ export default defineConfig({
 
   markdown: {
     lineNumbers: true,
-    config: (md) => {
+    config: md => {
       // 可以在这里注册自定义 markdown 插件
     }
   }

@@ -18,17 +18,11 @@
       <div class="preview-area">
         <h4>预览</h4>
         <div class="preview-content">
-          <LtdButton
-            v-if="currentComponent === 'Button'"
-            v-bind="buttonProps"
-          >
+          <LtdButton v-if="currentComponent === 'Button'" v-bind="buttonProps">
             {{ buttonProps.text || 'Button' }}
           </LtdButton>
 
-          <LtdTablePro
-            v-if="currentComponent === 'TablePro'"
-            v-bind="tableProProps"
-          />
+          <LtdTablePro v-if="currentComponent === 'TablePro'" v-bind="tableProProps" />
         </div>
       </div>
 
@@ -38,11 +32,7 @@
 
         <!-- Button 属性 -->
         <template v-if="currentComponent === 'Button'">
-          <div
-            v-for="field in buttonFields"
-            :key="field.prop"
-            class="prop-item"
-          >
+          <div v-for="field in buttonFields" :key="field.prop" class="prop-item">
             <label>{{ field.label }}</label>
 
             <!-- 字符串输入 -->
@@ -54,28 +44,15 @@
             />
 
             <!-- 下拉选择 -->
-            <select
-              v-else-if="field.type === 'select'"
-              v-model="buttonProps[field.prop]"
-            >
-              <option
-                v-for="opt in field.options"
-                :key="opt"
-                :value="opt"
-              >
+            <select v-else-if="field.type === 'select'" v-model="buttonProps[field.prop]">
+              <option v-for="opt in field.options" :key="opt" :value="opt">
                 {{ opt }}
               </option>
             </select>
 
             <!-- 布尔开关 -->
-            <label
-              v-else-if="field.type === 'boolean'"
-              class="switch-label"
-            >
-              <input
-                v-model="buttonProps[field.prop]"
-                type="checkbox"
-              />
+            <label v-else-if="field.type === 'boolean'" class="switch-label">
+              <input v-model="buttonProps[field.prop]" type="checkbox" />
               <span>{{ buttonProps[field.prop] ? '是' : '否' }}</span>
             </label>
           </div>
@@ -83,22 +60,12 @@
 
         <!-- TablePro 属性 -->
         <template v-if="currentComponent === 'TablePro'">
-          <div
-            v-for="field in tableProFields"
-            :key="field.prop"
-            class="prop-item"
-          >
+          <div v-for="field in tableProFields" :key="field.prop" class="prop-item">
             <label>{{ field.label }}</label>
 
             <!-- 布尔开关 -->
-            <label
-              v-if="field.type === 'boolean'"
-              class="switch-label"
-            >
-              <input
-                v-model="tableProProps[field.prop]"
-                type="checkbox"
-              />
+            <label v-if="field.type === 'boolean'" class="switch-label">
+              <input v-model="tableProProps[field.prop]" type="checkbox" />
               <span>{{ tableProProps[field.prop] ? '是' : '否' }}</span>
             </label>
 
@@ -139,12 +106,14 @@ const showCode = ref(true)
 
 const componentList = [
   { name: 'Button', label: 'Button 按钮', description: '基础按钮组件，支持多种类型、尺寸和状态' },
-  { name: 'TablePro', label: 'TablePro 高级表格', description: '基于 Element Plus Table 封装的高级表格组件' }
+  {
+    name: 'TablePro',
+    label: 'TablePro 高级表格',
+    description: '基于 Element Plus Table 封装的高级表格组件'
+  }
 ]
 
-const currentConfig = computed(() =>
-  componentList.find(c => c.name === currentComponent.value)
-)
+const currentConfig = computed(() => componentList.find(c => c.name === currentComponent.value))
 
 // ========== Button ==========
 const buttonProps = ref({
@@ -162,7 +131,12 @@ const buttonProps = ref({
 
 const buttonFields = [
   { prop: 'text', label: '按钮文字', type: 'string', default: 'Button' },
-  { prop: 'type', label: '类型', type: 'select', options: ['default', 'primary', 'success', 'warning', 'danger', 'info', 'text'] },
+  {
+    prop: 'type',
+    label: '类型',
+    type: 'select',
+    options: ['default', 'primary', 'success', 'warning', 'danger', 'info', 'text']
+  },
   { prop: 'size', label: '尺寸', type: 'select', options: ['large', 'default', 'small'] },
   { prop: 'plain', label: '朴素按钮', type: 'boolean' },
   { prop: 'round', label: '圆角按钮', type: 'boolean' },
@@ -238,9 +212,7 @@ const generatedCode = computed(() => {
       .join(' ')
 
     const text = buttonProps.value.text || 'Button'
-    return props
-      ? `<ltd-button ${props}>${text}</ltd-button>`
-      : `<ltd-button>${text}</ltd-button>`
+    return props ? `<ltd-button ${props}>${text}</ltd-button>` : `<ltd-button>${text}</ltd-button>`
   }
 
   if (currentComponent.value === 'TablePro') {
@@ -263,7 +235,10 @@ const generatedCode = computed(() => {
   :data="tableData"
   :columns="tableColumns"${props ? '\n  ' + props : ''}
 />`
-    return base + '\n\n<!-- 数据定义 -->\nconst tableData = [\n  { id: 1, name: "张三", age: 28, address: "北京市" },\n  ...\n]\n\nconst tableColumns = [\n  { prop: "name", label: "姓名", width: 120 },\n  ...\n]'
+    return (
+      base +
+      '\n\n<!-- 数据定义 -->\nconst tableData = [\n  { id: 1, name: "张三", age: 28, address: "北京市" },\n  ...\n]\n\nconst tableColumns = [\n  { prop: "name", label: "姓名", width: 120 },\n  ...\n]'
+    )
   }
 
   return ''
@@ -386,8 +361,8 @@ watch(currentComponent, () => {
   color: var(--vp-c-text-1);
 }
 
-.prop-item input[type="text"],
-.prop-item input[type="number"],
+.prop-item input[type='text'],
+.prop-item input[type='number'],
 .prop-item select {
   width: 100%;
   padding: 6px 10px;
@@ -405,7 +380,7 @@ watch(currentComponent, () => {
   cursor: pointer;
 }
 
-.switch-label input[type="checkbox"] {
+.switch-label input[type='checkbox'] {
   width: 18px;
   height: 18px;
   cursor: pointer;

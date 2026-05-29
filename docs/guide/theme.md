@@ -30,8 +30,9 @@ LTD UI 使用 CSS 变量（CSS Custom Properties）和 SCSS 变量双轨制，�
   --ltd-border-radius-small: 2px;
 
   /* 字体 */
-  --ltd-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC',
-    'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  --ltd-font-family:
+    'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial,
+    sans-serif;
 }
 
 /* 暗色主题 */
@@ -84,12 +85,12 @@ app.use(ElementPlus, {
 
 未来我们将提供以下预设主题，通过 npm 包直接引入：
 
-| 主题 | 包名 | 状态 |
-|------|------|------|
-| 默认蓝 | `@ltd-ui/theme-default` | 内置 |
-| 深空黑 | `@ltd-ui/theme-dark` | 计划中 |
-| 活力橙 | `@ltd-ui/theme-orange` | 计划中 |
-| 自然绿 | `@ltd-ui/theme-green` | 计划中 |
+| 主题   | 包名                    | 状态   |
+| ------ | ----------------------- | ------ |
+| 默认蓝 | `@ltd-ui/theme-default` | 内置   |
+| 深空黑 | `@ltd-ui/theme-dark`    | 计划中 |
+| 活力橙 | `@ltd-ui/theme-orange`  | 计划中 |
+| 自然绿 | `@ltd-ui/theme-green`   | 计划中 |
 
 ## 在线换肤
 

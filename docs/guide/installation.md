@@ -72,9 +72,9 @@ yarn add @ltd-ui/table-pro element-plus
 
 ## 版本说明
 
-| 包名 | 说明 | 版本 |
-|------|------|------|
-| `@ltd-ui/ltd-ui` | 全量入口包 | ![npm](https://img.shields.io/npm/v/@ltd-ui/ltd-ui) |
-| `@ltd-ui/core` | 核心工具和样式 | ![npm](https://img.shields.io/npm/v/@ltd-ui/core) |
-| `@ltd-ui/button` | 按钮组件 | ![npm](https://img.shields.io/npm/v/@ltd-ui/button) |
-| `@ltd-ui/table-pro` | 高级表格 | ![npm](https://img.shields.io/npm/v/@ltd-ui/table-pro) |
+| 包名                | 说明           | 版本                                                   |
+| ------------------- | -------------- | ------------------------------------------------------ |
+| `@ltd-ui/ltd-ui`    | 全量入口包     | ![npm](https://img.shields.io/npm/v/@ltd-ui/ltd-ui)    |
+| `@ltd-ui/core`      | 核心工具和样式 | ![npm](https://img.shields.io/npm/v/@ltd-ui/core)      |
+| `@ltd-ui/button`    | 按钮组件       | ![npm](https://img.shields.io/npm/v/@ltd-ui/button)    |
+| `@ltd-ui/table-pro` | 高级表格       | ![npm](https://img.shields.io/npm/v/@ltd-ui/table-pro) |

@@ -79,7 +79,7 @@ const handlePageChange = ({ page, limit }) => {
   fetchData()
 }
 
-const handleSizeChange = (size) => {
+const handleSizeChange = size => {
   limit.value = size
   fetchData()
 }
@@ -92,12 +92,7 @@ const handleSizeChange = (size) => {
 
 ```vue
 <template>
-  <ltd-table-pro
-    :data="allData"
-    :columns="columns"
-    local-pagination
-    show-pagination
-  />
+  <ltd-table-pro :data="allData" :columns="columns" local-pagination show-pagination />
 </template>
 
 <script setup>
@@ -151,7 +146,7 @@ const columns = [
   { prop: 'age', label: '年龄' }
 ]
 
-const handleSelectionChange = (rows) => {
+const handleSelectionChange = rows => {
   selectedCount.value = rows.length
 }
 </script>
@@ -198,7 +193,7 @@ const handleDelete = (row, index) => {
   console.log('删除', row, index)
 }
 
-const handleView = (row) => {
+const handleView = row => {
   console.log('查看', row)
 }
 </script>
@@ -210,12 +205,7 @@ const handleView = (row) => {
 
 ```vue
 <template>
-  <ltd-table-pro
-    :data="tableData"
-    :columns="columns"
-    show-toolbar
-    show-column-setting
-  />
+  <ltd-table-pro :data="tableData" :columns="columns" show-toolbar show-column-setting />
 </template>
 
 <script setup>
@@ -237,81 +227,81 @@ const columns = [
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
-|------|------|------|--------|
-| `data` | 表格数据 | `array` | `[]` |
-| `columns` | 列配置 | `array` | `[]` |
-| `loading` | 加载状态 | `boolean` | `false` |
-| `border` | 是否显示边框 | `boolean` | `true` |
-| `stripe` | 是否显示斑马纹 | `boolean` | `false` |
-| `height` | 表格高度 | `string / number` | — |
-| `maxHeight` | 表格最大高度 | `string / number` | — |
-| `size` | 表格尺寸 | `string` | `'default'` |
-| `highlightCurrentRow` | 是否高亮当前行 | `boolean` | `false` |
-| `showSelection` | 是否显示选择列 | `boolean` | `false` |
-| `showIndex` | 是否显示序号列 | `boolean` | `false` |
-| `selectable` | 是否可选中的回调 | `function` | `() => true` |
-| `showAction` | 是否显示操作列 | `boolean` | `false` |
-| `actionWidth` | 操作列宽度 | `string / number` | `150` |
-| `actionFixed` | 操作列固定位置 | `boolean / string` | `'right'` |
-| `showEdit` | 是否显示编辑按钮 | `boolean` | `true` |
-| `showDelete` | 是否显示删除按钮 | `boolean` | `true` |
-| `showToolbar` | 是否显示工具栏 | `boolean` | `false` |
-| `showColumnSetting` | 是否显示列设置 | `boolean` | `false` |
-| `showPagination` | 是否显示分页 | `boolean` | `true` |
-| `total` | 数据总数 | `number` | `0` |
-| `page` | 当前页 | `number` | `1` |
-| `limit` | 每页条数 | `number` | `10` |
-| `pageSizes` | 每页条数选项 | `array` | `[10, 20, 50, 100]` |
-| `paginationLayout` | 分页布局 | `string` | `'total, sizes, prev, pager, next, jumper'` |
-| `paginationBackground` | 分页是否有背景 | `boolean` | `true` |
-| `emptyText` | 空数据提示 | `string` | `'暂无数据'` |
-| `localPagination` | 是否本地分页 | `boolean` | `false` |
+| 属性                   | 说明             | 类型               | 默认值                                      |
+| ---------------------- | ---------------- | ------------------ | ------------------------------------------- |
+| `data`                 | 表格数据         | `array`            | `[]`                                        |
+| `columns`              | 列配置           | `array`            | `[]`                                        |
+| `loading`              | 加载状态         | `boolean`          | `false`                                     |
+| `border`               | 是否显示边框     | `boolean`          | `true`                                      |
+| `stripe`               | 是否显示斑马纹   | `boolean`          | `false`                                     |
+| `height`               | 表格高度         | `string / number`  | —                                           |
+| `maxHeight`            | 表格最大高度     | `string / number`  | —                                           |
+| `size`                 | 表格尺寸         | `string`           | `'default'`                                 |
+| `highlightCurrentRow`  | 是否高亮当前行   | `boolean`          | `false`                                     |
+| `showSelection`        | 是否显示选择列   | `boolean`          | `false`                                     |
+| `showIndex`            | 是否显示序号列   | `boolean`          | `false`                                     |
+| `selectable`           | 是否可选中的回调 | `function`         | `() => true`                                |
+| `showAction`           | 是否显示操作列   | `boolean`          | `false`                                     |
+| `actionWidth`          | 操作列宽度       | `string / number`  | `150`                                       |
+| `actionFixed`          | 操作列固定位置   | `boolean / string` | `'right'`                                   |
+| `showEdit`             | 是否显示编辑按钮 | `boolean`          | `true`                                      |
+| `showDelete`           | 是否显示删除按钮 | `boolean`          | `true`                                      |
+| `showToolbar`          | 是否显示工具栏   | `boolean`          | `false`                                     |
+| `showColumnSetting`    | 是否显示列设置   | `boolean`          | `false`                                     |
+| `showPagination`       | 是否显示分页     | `boolean`          | `true`                                      |
+| `total`                | 数据总数         | `number`           | `0`                                         |
+| `page`                 | 当前页           | `number`           | `1`                                         |
+| `limit`                | 每页条数         | `number`           | `10`                                        |
+| `pageSizes`            | 每页条数选项     | `array`            | `[10, 20, 50, 100]`                         |
+| `paginationLayout`     | 分页布局         | `string`           | `'total, sizes, prev, pager, next, jumper'` |
+| `paginationBackground` | 分页是否有背景   | `boolean`          | `true`                                      |
+| `emptyText`            | 空数据提示       | `string`           | `'暂无数据'`                                |
+| `localPagination`      | 是否本地分页     | `boolean`          | `false`                                     |
 
 ### Columns 配置
 
-| 属性 | 说明 | 类型 | 默认值 |
-|------|------|------|--------|
-| `prop` | 字段名 | `string` | 必填 |
-| `label` | 列标题 | `string` | 必填 |
-| `width` | 列宽度 | `string / number` | — |
-| `minWidth` | 最小宽度 | `string / number` | — |
-| `align` | 对齐方式 | `string` | `'left'` |
-| `sortable` | 是否可排序 | `boolean` | `false` |
-| `fixed` | 是否固定 | `boolean / string` | — |
-| `showOverflowTooltip` | 超出显示省略号 | `boolean` | `true` |
-| `formatter` | 格式化函数 | `function` | — |
-| `tagMap` | 标签映射 | `object` | — |
-| `required` | 列设置中不可隐藏 | `boolean` | `false` |
+| 属性                  | 说明             | 类型               | 默认值   |
+| --------------------- | ---------------- | ------------------ | -------- |
+| `prop`                | 字段名           | `string`           | 必填     |
+| `label`               | 列标题           | `string`           | 必填     |
+| `width`               | 列宽度           | `string / number`  | —        |
+| `minWidth`            | 最小宽度         | `string / number`  | —        |
+| `align`               | 对齐方式         | `string`           | `'left'` |
+| `sortable`            | 是否可排序       | `boolean`          | `false`  |
+| `fixed`               | 是否固定         | `boolean / string` | —        |
+| `showOverflowTooltip` | 超出显示省略号   | `boolean`          | `true`   |
+| `formatter`           | 格式化函数       | `function`         | —        |
+| `tagMap`              | 标签映射         | `object`           | —        |
+| `required`            | 列设置中不可隐藏 | `boolean`          | `false`  |
 
 ### Events
 
-| 事件名 | 说明 | 回调参数 |
-|--------|------|----------|
-| `selection-change` | 选择项变化 | `(selection: array)` |
-| `current-change` | 当前行变化 | `(currentRow: object)` |
-| `sort-change` | 排序变化 | `{ column, prop, order }` |
-| `row-click` | 行点击 | `(row, column, event)` |
-| `edit` | 编辑按钮点击 | `(row, index)` |
-| `delete` | 删除按钮点击 | `(row, index)` |
-| `page-change` | 页码变化 | `{ page, limit }` |
-| `size-change` | 每页条数变化 | `(size: number)` |
+| 事件名             | 说明         | 回调参数                  |
+| ------------------ | ------------ | ------------------------- |
+| `selection-change` | 选择项变化   | `(selection: array)`      |
+| `current-change`   | 当前行变化   | `(currentRow: object)`    |
+| `sort-change`      | 排序变化     | `{ column, prop, order }` |
+| `row-click`        | 行点击       | `(row, column, event)`    |
+| `edit`             | 编辑按钮点击 | `(row, index)`            |
+| `delete`           | 删除按钮点击 | `(row, index)`            |
+| `page-change`      | 页码变化     | `{ page, limit }`         |
+| `size-change`      | 每页条数变化 | `(size: number)`          |
 
 ### Methods
 
-| 方法名 | 说明 |
-|--------|------|
-| `clearSelection` | 清空选择 |
+| 方法名               | 说明             |
+| -------------------- | ---------------- |
+| `clearSelection`     | 清空选择         |
 | `toggleRowSelection` | 切换某行选择状态 |
-| `toggleAllSelection` | 切换全选 |
-| `getSelectionRows` | 获取已选行数据 |
+| `toggleAllSelection` | 切换全选         |
+| `getSelectionRows`   | 获取已选行数据   |
 
 ### Slots
 
-| 插槽名 | 说明 | 作用域参数 |
-|--------|------|-----------|
-| `toolbar-left` | 工具栏左侧 | — |
-| `toolbar-right` | 工具栏右侧 | — |
-| `[prop]` | 自定义列内容 | `{ row, $index }` |
-| `action` | 操作列内容 | `{ row, $index }` |
-| `empty` | 空数据内容 | — |
+| 插槽名          | 说明         | 作用域参数        |
+| --------------- | ------------ | ----------------- |
+| `toolbar-left`  | 工具栏左侧   | —                 |
+| `toolbar-right` | 工具栏右侧   | —                 |
+| `[prop]`        | 自定义列内容 | `{ row, $index }` |
+| `action`        | 操作列内容   | `{ row, $index }` |
+| `empty`         | 空数据内容   | —                 |

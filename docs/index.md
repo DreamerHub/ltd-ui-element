@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "LTD UI"
-  text: "Vue 3 组件库"
+  name: 'LTD UI'
+  text: 'Vue 3 组件库'
   tagline: 自研组件与 Element Plus 封装的高效组合，支持按需引入，助力中后台开发
   image:
     src: /logo.svg
