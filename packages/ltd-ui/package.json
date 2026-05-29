@@ -1,0 +1,40 @@
+{
+  "name": "@ltd-ui/ltd-ui",
+  "version": "1.0.0",
+  "description": "LTD UI - Complete Vue 3 component library",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "style": "dist/style.css",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "es",
+    "lib"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "style": "./dist/style.css"
+    },
+    "./dist/*": "./dist/*",
+    "./es/*": "./es/*",
+    "./lib/*": "./lib/*"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0",
+    "element-plus": "^2.5.0"
+  },
+  "dependencies": {
+    "@ltd-ui/button": "workspace:*",
+    "@ltd-ui/core": "workspace:*",
+    "@ltd-ui/table-pro": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^5.1.0"
+  },
+  "license": "MIT"
+}
